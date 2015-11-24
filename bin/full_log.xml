@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<log>
+  <format>
+    <timestamp value="seconds"></timestamp>
+    <level value="true"></level>
+    <threadId value="true"></threadId>
+    <ID value="true"></ID>
+  </format>
+  <configuration>
+    <id value="true"></id>
+    <multiple_sinks value="false"></multiple_sinks>
+  </configuration>
+  <default>
+    <sink value="main_sink"></sink>
+    <level value="TRACE"></level>
+    <rotation value="true"></rotation>
+    <rotation_size value="10485760"></rotation_size>
+    <rotation_time value="0"></rotation_time>
+  </default>
+  <id_configuration>
+    <channel name="main">
+      <sink value="main_sink"></sink>
+      <level value="TRACE"></level>
+      <rotation value="true"></rotation>
+      <rotation_size value="10485760"></rotation_size>
+      <rotation_time value="0"></rotation_time>
+      <child name="main:Uno">
+        <sink value="main_sink"></sink>
+        <level value="TRACE"></level>
+        <rotation value="true"></rotation>
+        <rotation_size value="10485760"></rotation_size>
+        <rotation_time value="0"></rotation_time>
+      </child>
+    </channel>
+    <channel name="test">
+      <sink value="main_sink"></sink>
+      <level value="TRACE"></level>
+      <rotation value="true"></rotation>
+      <rotation_size value="10485760"></rotation_size>
+      <rotation_time value="0"></rotation_time>
+    </channel>
+  </id_configuration>
+</log>

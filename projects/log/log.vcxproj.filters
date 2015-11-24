@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{9ab1d997-e2cf-437a-9060-fc58947c179c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{404c9596-b43b-47a1-a367-520b5a1923a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\full_log">
+      <UniqueIdentifier>{847683ee-035d-45a9-858d-c731870c926c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\trivial_log">
+      <UniqueIdentifier>{58b3810d-78ad-4e20-aae6-e1c5486bd2ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\trivial_log">
+      <UniqueIdentifier>{e829ebec-24a7-4d89-8ed8-3bc27153cc9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\simple_log">
+      <UniqueIdentifier>{1c1abfcc-caf1-4407-9155-ce79a60e90ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\full_log">
+      <UniqueIdentifier>{8929bb17-0106-46e2-bbc5-9fadb6afc2f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\simple_log">
+      <UniqueIdentifier>{6a770906-8964-4e12-95cf-a98a680bcf2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Common">
+      <UniqueIdentifier>{4bdd58f0-3571-4d36-b77e-d0d90f8fb249}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Common\Util">
+      <UniqueIdentifier>{36aaf850-86a5-4aa8-86cb-80563e312e1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Common">
+      <UniqueIdentifier>{076c361e-c1a6-4a13-9ece-ee84f142c613}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Common\Util">
+      <UniqueIdentifier>{3df05289-805d-4e99-9a54-e96d172f5941}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Common\Util\XMLParser">
+      <UniqueIdentifier>{33d99c29-228f-48c2-894a-1c19f3ae51a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Common\Util\XMLParser">
+      <UniqueIdentifier>{bc812fac-3cea-4256-bccc-d1bae41bafca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Common\Util\XMLParser\RapidXml">
+      <UniqueIdentifier>{fe888d4e-3968-4d29-82cb-5e1253b316f8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\log\source\log.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\log\source\trivial\trivial_log.cpp">
+      <Filter>src\trivial_log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\log\source\full\full_log.cpp">
+      <Filter>src\full_log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\log\source\simple\simple_log.cpp">
+      <Filter>src\simple_log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\log\source\common\util\va_list_helpers.cpp">
+      <Filter>src\Common\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\log\source\common\util\XMLParser\XmlParser.cpp">
+      <Filter>src\Common\Util\XMLParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\log\source\common\util\parser.cpp">
+      <Filter>src\Common\Util</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\log\include\log.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\log\include\trivial\trivial_log.h">
+      <Filter>include\trivial_log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\log\include\full\full_log.h">
+      <Filter>include\full_log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\log\include\simple\simple_log.h">
+      <Filter>include\simple_log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\log\include\common\util\va_list_helpers.h">
+      <Filter>include\Common\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\log\include\common\util\XMLParser\XmlParser.h">
+      <Filter>include\Common\Util\XMLParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\log\include\common\util\XMLParser\RapidXml\rapidxml.hpp">
+      <Filter>include\Common\Util\XMLParser\RapidXml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\log\include\common\util\XMLParser\RapidXml\rapidxml_iterators.hpp">
+      <Filter>include\Common\Util\XMLParser\RapidXml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\log\include\common\util\XMLParser\RapidXml\rapidxml_print.hpp">
+      <Filter>include\Common\Util\XMLParser\RapidXml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\log\include\common\util\XMLParser\RapidXml\rapidxml_utils.hpp">
+      <Filter>include\Common\Util\XMLParser\RapidXml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\log\include\common\util\parser.h">
+      <Filter>include\Common\Util</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
