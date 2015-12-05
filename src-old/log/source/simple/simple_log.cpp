@@ -67,7 +67,7 @@ static enum timestamp_fmt {
 	SECONDS,
 	MILLISECONDS,
 	TIME
-};
+} timestamp_;
 
 static timestamp_fmt timestamp = SECONDS;
 
@@ -87,7 +87,7 @@ static level::ELogLevel string_to_level(const std::string & str)
 	else if (str == "FATAL") return (level::FATAL);
 	return (static_cast<level::ELogLevel> (5));
 	//TODO catch exception
-	return (static_cast<level::ELogLevel> (std::stoi(str)));
+	//return (static_cast<level::ELogLevel> (std::stoi(str)));
 }
 
 static const char* level_to_string(level::ELogLevel lvl)
@@ -354,7 +354,7 @@ static void vlog(level::ELogLevel lvl, const char* fmt, va_list args)
 		printf_f(id_header_fmt.c_str(), get_timestamp(), get_thread_id().c_str(), level_to_string(lvl));
 		vprintf_f(format.c_str(), args);
 
-		if (fatal_exit && lvl >= level::ELogLevel::FATAL){
+		if (fatal_exit && lvl >= level::FATAL){
 			fflush(stdout);
 			throw std::runtime_error("Fatal error!");
 		}
@@ -367,7 +367,7 @@ static void vlog(level::ELogLevel lvl, const char* fmt, va_list args)
 		format.append("\n");
 		vprintf_f(format.c_str(), args);
 
-		if (fatal_exit && lvl >= level::ELogLevel::FATAL){
+		if (fatal_exit && lvl >= level::FATAL){
 			fflush(stdout);
 			throw std::runtime_error("Fatal error!");
 		}
@@ -379,7 +379,7 @@ void trace(const char* format, ...)
 	va_list args;
 	va_start(args, format);
 	vlog(level::TRACE, format, args);
-	va_end(args, format);
+	va_end(args);
 }
 
 void debug(const char* format, ...)
@@ -387,7 +387,7 @@ void debug(const char* format, ...)
 	va_list args;
 	va_start(args, format);
 	vlog(level::DEBUG, format, args);
-	va_end(args, format);
+	va_end(args);
 }
 
 void info(const char* format, ...)
@@ -395,7 +395,7 @@ void info(const char* format, ...)
 	va_list args;
 	va_start(args, format);
 	vlog(level::INFO, format, args);
-	va_end(args, format);
+	va_end(args);
 }
 
 void warning(const char* format, ...)
@@ -403,7 +403,7 @@ void warning(const char* format, ...)
 	va_list args;
 	va_start(args, format);
 	vlog(level::WARNING, format, args);
-	va_end(args, format);
+	va_end(args);
 }
 
 void error(const char* format, ...)
@@ -411,7 +411,7 @@ void error(const char* format, ...)
 	va_list args;
 	va_start(args, format);
 	vlog(level::_ERROR, format, args);
-	va_end(args, format);
+	va_end(args);
 }
 
 void fatal(const char* format, ...)
@@ -419,7 +419,7 @@ void fatal(const char* format, ...)
 	va_list args;
 	va_start(args, format);
 	vlog(level::FATAL, format, args);
-	va_end(args, format);
+	va_end(args);
 }
 
 }}

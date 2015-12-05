@@ -249,6 +249,7 @@ static void setDefaultSinks(const std::string& filename, const common::util::par
 		boost::shared_ptr<tText_sink> sink = boost::make_shared<tText_sink>();
 
 		sink->locked_backend()->add_stream(console_stream);
+		//FIXME seems to fail on linux
 		//sink->locked_backend()->add_stream(boost::make_shared < std::ofstream > (default_sink_path+".log"));
 		sink->set_formatter(default_stream_format);
 		//sink->set_filter(severity >= string_to_level(info.filter_level));

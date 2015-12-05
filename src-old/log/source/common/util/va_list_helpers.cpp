@@ -15,6 +15,7 @@ along with BLA_LOG.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <common/util/va_list_helpers.h>
 
+#include <stdio.h>
 #include <string.h>
 #include <string>
 #include <sstream>

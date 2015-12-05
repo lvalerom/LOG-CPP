@@ -16,6 +16,11 @@ along with BLA_LOG.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <stdio.h>
 
+#ifndef _WIN32
+#define BOOST_ALL_DYN_LINK
+#define BOOST_LOG_DYN_LINK
+#endif
+
 //#define TRIVIAL_LOG
 //#define NLOG
 #define FULL_LOG

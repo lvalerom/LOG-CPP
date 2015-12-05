@@ -17,10 +17,12 @@ along with BLA_LOG.  If not, see <http://www.gnu.org/licenses/>.
 #define __LOG_H
 
 //#define TRIVIAL_LOG
-
-//#define BOOST_LOG_DYN_LINK 1
-//#define BOOST_ALL_DYN_LINK 1
-
+/*
+#ifndef _WIN32
+#define BOOST_ALL_DYN_LINK
+#define BOOST_LOG_DYN_LINK
+#endif
+*/
 #ifdef NLOG
 
 #undef log_trace

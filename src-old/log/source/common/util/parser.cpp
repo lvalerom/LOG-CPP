@@ -166,10 +166,10 @@ bool set_up_full_log(const char* file, full_log_config_info* info)
 							}
 						}
 						else if (key == "%default_rotation_size"){
-							info->default_info.rotation.rotation_size = std::strtoul(value.c_str(),0,0);
+							info->default_info.rotation.rotation_size = strtoul(value.c_str(),0,0);
 						}
 						else if (key == "%default_rotation_time"){
-							info->default_info.rotation.rotation_time = std::strtoul(value.c_str(), 0, 0);
+							info->default_info.rotation.rotation_time = strtoul(value.c_str(), 0, 0);
 						}
 						else{
 							fprintf(stderr, "Error invalid default configuration format\n");

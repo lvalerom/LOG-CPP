@@ -180,15 +180,15 @@ static void set_up_format(const common::util::parser::full_log_config_info& info
 	logging::formatter fmt = expr::stream;
 	switch (info.fmt.timestamp)
 	{
-	case timestamp_fmt::MILLISECONDS:
+	case MILLISECONDS:
 		break;
-	case timestamp_fmt::TIME:
+	case TIME:
 		expr::format_date_time<boost::posix_time::ptime>("TimeStamp", "%H:%M:%S");
 		break;
-	case timestamp_fmt::LONG_TIME:
+	case LONG_TIME:
 		fmt << expr::format_date_time<boost::posix_time::ptime>("TimeStamp", "%Y-%m-%d %H:%M:%S");
 		break;
-	case timestamp_fmt::SECONDS:
+	case SECONDS:
 	default:
 		//fmt << expr::format_date_time<boost::posix_time::ptime>("TimeStamp", "%S");
 		break;
@@ -209,7 +209,7 @@ static level::ELogLevel string_to_level(const std::string & str)
 	else if (str == "FATAL") return (level::FATAL);
 	return (static_cast<level::ELogLevel> (5));
 	//TODO catch exception
-	return (static_cast<level::ELogLevel> (std::stoi(str)));
+	//return (static_cast<level::ELogLevel> (std::stoi(str)));
 }
 
 static void addChannel(const std::string& name, const common::util::parser::slogger_info& info)
@@ -249,7 +249,8 @@ static void setDefaultSinks(const std::string& filename, const common::util::par
 		boost::shared_ptr<tText_sink> sink = boost::make_shared<tText_sink>();
 
 		sink->locked_backend()->add_stream(console_stream);
-		sink->locked_backend()->add_stream(boost::make_shared<std::ofstream>(default_sink_path+".log"));
+		//FIXME seems to fail on linux
+		//sink->locked_backend()->add_stream(boost::make_shared<std::ofstream>(default_sink_path+".log"));
 		sink->set_formatter(default_stream_format);
 		//sink->set_filter(severity >= string_to_level(info.filter_level));
 		logging::core::get()->add_sink(sink);
