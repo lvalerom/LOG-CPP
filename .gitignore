@@ -40,6 +40,10 @@
 !*.conf
 !*.xml
 
+!*.sh
+!*.ac
+!*.am
+
 !.gitignore
 
 !projects/log/log.vcxproj
@@ -51,5 +55,8 @@
 !log_main.sln
 
 !AUTHORS
-!COPYNG
 !LICENSE
+!COPYING
+!ChangeLog
+!NEWS
+!README

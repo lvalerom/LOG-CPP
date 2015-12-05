@@ -14,13 +14,17 @@ You should have received a copy of the GNU Lesser General Public License
 along with BLA_LOG.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#define BOOST_ALL_DYN_LINK
+#define BOOST_LOG_DYN_LINK
+
 #include <stdio.h>
 
 //#define TRIVIAL_LOG
 //#define NLOG
 #define FULL_LOG
 //#define SIMPLE_LOG
-#include <include/log.h>
+//#include <include/log.h>
+#include "log/log.h"
 
 #if 0
 #include <cstddef>
