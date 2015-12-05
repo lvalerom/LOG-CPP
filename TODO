@@ -1,0 +1,6 @@
+# Visual Studio
+
+reconfigure the *.vcxproj and *.vcxprok.filters files
+
+# Autotools
+link the log.la library properly
