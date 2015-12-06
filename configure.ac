@@ -22,7 +22,7 @@ AM_PROG_AR
 AM_INIT_AUTOMAKE([foreign -Wall -Werror])
 
 # init libtool
-LT_INIT
+LT_INIT([disable-static])
 
 # Check for programs
 # C++ compiler

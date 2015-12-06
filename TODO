@@ -3,4 +3,5 @@
 reconfigure the *.vcxproj and *.vcxprok.filters files
 
 # Autotools
-link the log.la library properly
+link the log.la library properly [DONE]
+should use -DBOOST_LOG_DYN_LINK option instead of BOOST_LOG_DYN_LINK macros

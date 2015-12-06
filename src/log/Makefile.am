@@ -18,7 +18,12 @@ liblog_la_LIBADD = \
 	$(BOOST_SYSTEM_LIB) \
 	$(BOOST_LOG_LIB)
 
-liblog_la_LDFLAGS = $(BOOST_LDFLAGS)
+liblog_la_CPPFLAGS = \
+	$(BOOST_CPPFLAGS)
+
+
+liblog_la_LDFLAGS = \
+		$(BOOST_LDFLAGS)
 
 #liblog_la_HEADERS = \
 #	log.h
