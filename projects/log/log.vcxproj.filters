@@ -48,61 +48,61 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\log\source\log.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\log\source\trivial\trivial_log.cpp">
-      <Filter>src\trivial_log</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\log\source\full\full_log.cpp">
-      <Filter>src\full_log</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\log\source\simple\simple_log.cpp">
-      <Filter>src\simple_log</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\log\source\common\util\va_list_helpers.cpp">
-      <Filter>src\Common\Util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\log\source\common\util\XMLParser\XmlParser.cpp">
-      <Filter>src\Common\Util\XMLParser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\log\source\common\util\parser.cpp">
-      <Filter>src\Common\Util</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\src\log\include\log.h">
-      <Filter>include</Filter>
+    <ClInclude Include="..\..\src\log\common\util\RapidXml\rapidxml.hpp">
+      <Filter>include\Common\Util\XMLParser\RapidXml</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\log\include\trivial\trivial_log.h">
-      <Filter>include\trivial_log</Filter>
+    <ClInclude Include="..\..\src\log\common\util\RapidXml\rapidxml_iterators.hpp">
+      <Filter>include\Common\Util\XMLParser\RapidXml</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\log\include\full\full_log.h">
-      <Filter>include\full_log</Filter>
+    <ClInclude Include="..\..\src\log\common\util\RapidXml\rapidxml_print.hpp">
+      <Filter>include\Common\Util\XMLParser\RapidXml</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\log\include\simple\simple_log.h">
-      <Filter>include\simple_log</Filter>
+    <ClInclude Include="..\..\src\log\common\util\RapidXml\rapidxml_utils.hpp">
+      <Filter>include\Common\Util\XMLParser\RapidXml</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\log\include\common\util\va_list_helpers.h">
-      <Filter>include\Common\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\log\include\common\util\XMLParser\XmlParser.h">
+    <ClInclude Include="..\..\src\log\common\util\XmlParser.h">
       <Filter>include\Common\Util\XMLParser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\log\include\common\util\XMLParser\RapidXml\rapidxml.hpp">
-      <Filter>include\Common\Util\XMLParser\RapidXml</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\log\include\common\util\XMLParser\RapidXml\rapidxml_iterators.hpp">
-      <Filter>include\Common\Util\XMLParser\RapidXml</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\log\include\common\util\XMLParser\RapidXml\rapidxml_print.hpp">
-      <Filter>include\Common\Util\XMLParser\RapidXml</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\log\include\common\util\XMLParser\RapidXml\rapidxml_utils.hpp">
-      <Filter>include\Common\Util\XMLParser\RapidXml</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\log\include\common\util\parser.h">
+    <ClInclude Include="..\..\src\log\common\util\va_list_helpers.h">
       <Filter>include\Common\Util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\log\common\util\parser.h">
+      <Filter>include\Common\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\log\full_log.h">
+      <Filter>include\full_log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\log\simple_log.h">
+      <Filter>include\simple_log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\log\trivial_log.h">
+      <Filter>include\trivial_log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\log\log.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\log\common\util\XmlParser.cpp">
+      <Filter>src\Common\Util\XMLParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\log\common\util\va_list_helpers.cpp">
+      <Filter>src\Common\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\log\common\util\parser.cpp">
+      <Filter>src\Common\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\log\full_log.cpp">
+      <Filter>src\full_log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\log\simple_log.cpp">
+      <Filter>src\simple_log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\log\trivial_log.cpp">
+      <Filter>src\trivial_log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\log\log.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

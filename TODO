@@ -3,7 +3,7 @@ NLOG seems not be working on linux
 
 # Visual Studio
 
-reconfigure the *.vcxproj and *.vcxprok.filters files
+reconfigure the *.vcxproj and *.vcxprok.filters files [DONE]
 
 # Autotools
 link the log.la library properly [DONE]

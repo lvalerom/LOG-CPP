@@ -22,8 +22,8 @@ along with BLA_LOG.  If not, see <http://www.gnu.org/licenses/>.
 
 //#define TRIVIAL_LOG
 //#define NLOG
-#define FULL_LOG
-//#define SIMPLE_LOG
+//#define FULL_LOG
+#define SIMPLE_LOG
 //#include <include/log.h>
 #include "log/log.h"
 
@@ -169,13 +169,13 @@ int main(int argc, char* argv[])
 
 	BOOST_LOG(lg) << "logger";
 #endif
-	log_setup(0,0,"full_log.xml");
+	log_setup(0,0,"log.conf");
 
 	log_trace("testing", "Default");
 	log_trace("testing", "main");
 	log_trace("testing", "main:Uno");
 	log_trace("testing", "main:Dos");
-	
+
 	//LOG(trace, "Default") << "hola mundo";
 	
 	/*

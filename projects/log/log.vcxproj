@@ -11,26 +11,26 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\log\source\common\util\parser.cpp" />
-    <ClCompile Include="..\..\src\log\source\common\util\va_list_helpers.cpp" />
-    <ClCompile Include="..\..\src\log\source\common\util\XMLParser\XmlParser.cpp" />
-    <ClCompile Include="..\..\src\log\source\full\full_log.cpp" />
-    <ClCompile Include="..\..\src\log\source\log.cpp" />
-    <ClCompile Include="..\..\src\log\source\simple\simple_log.cpp" />
-    <ClCompile Include="..\..\src\log\source\trivial\trivial_log.cpp" />
+    <ClInclude Include="..\..\src\log\common\util\parser.h" />
+    <ClInclude Include="..\..\src\log\common\util\RapidXml\rapidxml.hpp" />
+    <ClInclude Include="..\..\src\log\common\util\RapidXml\rapidxml_iterators.hpp" />
+    <ClInclude Include="..\..\src\log\common\util\RapidXml\rapidxml_print.hpp" />
+    <ClInclude Include="..\..\src\log\common\util\RapidXml\rapidxml_utils.hpp" />
+    <ClInclude Include="..\..\src\log\common\util\va_list_helpers.h" />
+    <ClInclude Include="..\..\src\log\common\util\XmlParser.h" />
+    <ClInclude Include="..\..\src\log\full_log.h" />
+    <ClInclude Include="..\..\src\log\log.h" />
+    <ClInclude Include="..\..\src\log\simple_log.h" />
+    <ClInclude Include="..\..\src\log\trivial_log.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\log\include\common\util\parser.h" />
-    <ClInclude Include="..\..\src\log\include\common\util\va_list_helpers.h" />
-    <ClInclude Include="..\..\src\log\include\common\util\XMLParser\RapidXml\rapidxml.hpp" />
-    <ClInclude Include="..\..\src\log\include\common\util\XMLParser\RapidXml\rapidxml_iterators.hpp" />
-    <ClInclude Include="..\..\src\log\include\common\util\XMLParser\RapidXml\rapidxml_print.hpp" />
-    <ClInclude Include="..\..\src\log\include\common\util\XMLParser\RapidXml\rapidxml_utils.hpp" />
-    <ClInclude Include="..\..\src\log\include\common\util\XMLParser\XmlParser.h" />
-    <ClInclude Include="..\..\src\log\include\full\full_log.h" />
-    <ClInclude Include="..\..\src\log\include\log.h" />
-    <ClInclude Include="..\..\src\log\include\simple\simple_log.h" />
-    <ClInclude Include="..\..\src\log\include\trivial\trivial_log.h" />
+    <ClCompile Include="..\..\src\log\common\util\parser.cpp" />
+    <ClCompile Include="..\..\src\log\common\util\va_list_helpers.cpp" />
+    <ClCompile Include="..\..\src\log\common\util\XmlParser.cpp" />
+    <ClCompile Include="..\..\src\log\full_log.cpp" />
+    <ClCompile Include="..\..\src\log\log.cpp" />
+    <ClCompile Include="..\..\src\log\simple_log.cpp" />
+    <ClCompile Include="..\..\src\log\trivial_log.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9F3C28EB-6DB3-4EFF-A14C-6BDB5B523B1E}</ProjectGuid>
