@@ -238,13 +238,13 @@ void slog::setup(unsigned int lvl, const char* ids, const char* file, const char
 
                     if(console_mode){
                         debugger_log("Console sink...\n");
-                        boost::shared_ptr<sink_t> consoleSink = boost::make_shared<sink_t>();
-                        consoleSink->locked_backend()->add_stream(stream);
+                        boost::shared_ptr<sink_t> console_sink = boost::make_shared<sink_t>();
+                        console_sink->locked_backend()->add_stream(stream);
 
-                        consoleSink->set_filter(boost::log::expressions::attr< std::string >("Channel") == id && severity >= llvl);
-                        consoleSink->set_formatter(fmt);
+                        console_sink->set_filter(boost::log::expressions::attr< std::string >("Channel") == id && severity >= llvl);
+                        console_sink->set_formatter(fmt);
 
-                        boost::log::core::get()->add_sink(consoleSink);
+                        boost::log::core::get()->add_sink(console_sink);
                         debugger_log("Console sink [DONE]\n");
                     }
                     debugger_log("ID line: %s-%s [DONE]\n",id.c_str(),lv.c_str());
@@ -274,13 +274,13 @@ void slog::setup(unsigned int lvl, const char* ids, const char* file, const char
         }
         if(console_mode){
             debugger_log("Console sink...\n");
-            boost::shared_ptr<sink_t> consoleSink = boost::make_shared<sink_t>();
-            consoleSink->locked_backend()->add_stream(stream);
+            boost::shared_ptr<sink_t> console_sink = boost::make_shared<sink_t>();
+            console_sink->locked_backend()->add_stream(stream);
 
-            consoleSink->set_filter(severity >= static_cast<ES>(lvl));
-            consoleSink->set_formatter(fmt);
+            console_sink->set_filter(severity >= static_cast<ES>(lvl));
+            console_sink->set_formatter(fmt);
 
-            boost::log::core::get()->add_sink(consoleSink);
+            boost::log::core::get()->add_sink(console_sink);
             debugger_log("Console sink [DONE]\n");
         }
         debugger_log("Default sinks [DONE]\n");
