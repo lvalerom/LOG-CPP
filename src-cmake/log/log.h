@@ -20,14 +20,8 @@ along with BLA_LOG.  If not, see <http://www.gnu.org/licenses/>.
 #undef log_trace
 
 #define BOOST_LOG_DYN_LINK 1
-//CLEAN
-#include <iostream>
-#include <string>
-#include <boost/log/trivial.hpp>
-#include <boost/log/core.hpp>
 #include <boost/log/sources/global_logger_storage.hpp>
 #include <boost/log/sources/record_ostream.hpp>
-#include <boost/log/sources/channel_feature.hpp>
 #include <boost/log/sources/severity_channel_logger.hpp>
 
 #define LOG_DEBUG
