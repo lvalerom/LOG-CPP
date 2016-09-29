@@ -1,0 +1,2 @@
+#define log_VERSION_MAJOR @log_VERSION_MAJOR@
+#define log_VERSION_MINOR @log_VERSION_MINOR@

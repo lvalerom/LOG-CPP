@@ -46,6 +46,9 @@
 
 !.gitignore
 
+!*.h.in
+!CMakeLists.txt
+
 !projects/log/log.vcxproj
 !projects/log/log.vcxproj.filters
 
