@@ -15,8 +15,6 @@ along with BLA_LOG.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "log.h"
 
-
-//CLEAN
 #include <fstream>
 #include <string>
 
@@ -38,18 +36,21 @@ BOOST_LOG_GLOBAL_LOGGER_INIT(logger, thread_safe_logger)
     return logger;
 }
 
-void slog::setup(unsigned int lvl, const char* ids, const char* file, const char* conf, bool consoleMode)
+void slog::setup(unsigned int lvl, const char* ids, const char* file, const char* conf, bool console_mode)
 {
     debugger_log("Log setup\n");
     std::string timestamp {"%Y-%m-%d %H:%M:%S"};
-    bool hasRotation = false;
-    unsigned int rotation = 0;
+    bool has_rotation = false;
+    unsigned long long size_rotation = 0;
+    unsigned int filename_digits = 0;
+    unsigned int hour_rotation = 0;
+    unsigned int min_rotation = 0;
+    unsigned int sec_rotation = 0;
 
     if(conf){
         debugger_log("Config file: %s\n", conf);
         using std::string;
         using std::ifstream;
-        using std::stringstream;
 
         ifstream in{conf};
         if(!in){
@@ -75,17 +76,66 @@ void slog::setup(unsigned int lvl, const char* ids, const char* file, const char
             }
 
             if(start == '%'){
-                string strrotation{""}; getline(in, strrotation);
-                debugger_log("Found file rotation config line: %s\n",strrotation.c_str());
-                try {
-                    rotation = std::stoi(strrotation.substr(1,strrotation.length()-2));
-                    debugger_log("Size rotation: %u\n", rotation);
-                }catch(std::invalid_argument e){
-                    debugger_log("Error invalid_argument exception...\n");
-                    hasRotation = false;
-                    continue;
+                string id {""}, rot_info{""};
+                getline(in, id, '=');
+                id = id.substr(1,id.length()-1);
+                if (id != ""){
+                    getline(in, rot_info);
+                    if (rot_info != ""){
+                        debugger_log("Found rotation info line: %s=%s\n",id.c_str(),rot_info.c_str());
+                        if(id == "size"){
+                            try {
+                                size_rotation = std::stoull(rot_info);
+                                debugger_log("Size rotation: %llu\n", size_rotation);
+                            }catch(std::invalid_argument e){
+                                debugger_log("Error invalid_argument exception...\n");
+                                has_rotation = false;
+                                continue;
+                            }
+                        }
+                        if(id == "filename_digits"){
+                            try {
+                                filename_digits = std::stoull(rot_info);
+                                debugger_log("Filename digits: %u\n", filename_digits);
+                            }catch(std::invalid_argument e){
+                                debugger_log("Error invalid_argument exception...\n");
+                                has_rotation = false;
+                                continue;
+                            }
+                        }
+                        if(id == "time_hour"){
+                            try {
+                                hour_rotation = std::stoull(rot_info);
+                                debugger_log("Hour rotation: %u\n", hour_rotation);
+                            }catch(std::invalid_argument e){
+                                debugger_log("Error invalid_argument exception...\n");
+                                has_rotation = false;
+                                continue;
+                            }
+                        }
+                        if(id == "time_min"){
+                            try {
+                                min_rotation = std::stoull(rot_info);
+                                debugger_log("Min rotation: %u\n", min_rotation);
+                            }catch(std::invalid_argument e){
+                                debugger_log("Error invalid_argument exception...\n");
+                                has_rotation = false;
+                                continue;
+                            }
+                        }
+                        if(id == "time_sec"){
+                            try {
+                                sec_rotation = std::stoull(rot_info);
+                                debugger_log("Sec rotation: %u\n", sec_rotation);
+                            }catch(std::invalid_argument e){
+                                debugger_log("Error invalid_argument exception...\n");
+                                has_rotation = false;
+                                continue;
+                            }
+                        }
+                    }
                 }
-                hasRotation = true;
+                has_rotation = true;
                 continue;
             }
             string line {""}; getline(in, line);
@@ -108,21 +158,23 @@ void slog::setup(unsigned int lvl, const char* ids, const char* file, const char
     debugger_log("Formatter [DONE]\n");
 
     boost::shared_ptr<boost::log::sinks::text_ostream_backend> backend;
-    boost::shared_ptr<boost::log::sinks::text_file_backend> rotBackend;
+    boost::shared_ptr<boost::log::sinks::text_file_backend> rot_backend;
     if(file){
         debugger_log("Setting stream backends...\n");
-        if(!hasRotation){
+        if(!has_rotation){
             debugger_log("Backend without rotation...\n");
             backend = boost::make_shared<boost::log::sinks::text_ostream_backend>();
             backend->add_stream(boost::make_shared<std::ofstream>(file));
             debugger_log("Backend without rotation [DONE]\n");
         } else {
-            //FIXME
+            std::stringstream ss{file};
+            ss << file << "_%" << filename_digits << "N.log";
             debugger_log("Backend with rotation...\n");
-            rotBackend = boost::make_shared<boost::log::sinks::text_file_backend>(
-                        boost::log::keywords::file_name = "file_%5N.log",
-                        boost::log::keywords::rotation_size = 5 * 1024 * 1024,
-                        boost::log::keywords::time_based_rotation = boost::log::sinks::file::rotation_at_time_point(12, 0, 0)
+            rot_backend = boost::make_shared<boost::log::sinks::text_file_backend>(
+                        boost::log::keywords::file_name = ss.str(),
+                        boost::log::keywords::rotation_size = size_rotation,
+                        boost::log::keywords::time_based_rotation = boost::log::sinks::file::rotation_at_time_point(
+                        hour_rotation, min_rotation, sec_rotation)
                     );
             debugger_log("Backend with rotation [DONE]\n");
         }
@@ -131,14 +183,12 @@ void slog::setup(unsigned int lvl, const char* ids, const char* file, const char
     boost::shared_ptr< std::ostream > stream(&std::clog, boost::null_deleter());
 
     typedef boost::log::sinks::synchronous_sink<boost::log::sinks::text_ostream_backend> sink_t;
-    typedef boost::log::sinks::synchronous_sink<boost::log::sinks::text_file_backend> sinkFile_t;
-    typedef boost::log::sinks::synchronous_sink<boost::log::sinks::text_ostream_backend> text_sink;
+    typedef boost::log::sinks::synchronous_sink<boost::log::sinks::text_file_backend> sink_file_t;
 
     if(ids){
         debugger_log("Ids file: %s\n",ids);
         using std::string;
         using std::ifstream;
-        using std::stringstream;
 
         ifstream in{ids};
         if(!in){
@@ -166,7 +216,7 @@ void slog::setup(unsigned int lvl, const char* ids, const char* file, const char
                     llvl >> lv;
 
                     debugger_log("Setting sinks...\n");
-                    if(file && !hasRotation){
+                    if(file && !has_rotation){
                         debugger_log("Sink without rotation...\n");
                         boost::shared_ptr<sink_t> sink(new sink_t(backend));
                         sink->set_filter(boost::log::expressions::attr< std::string >("Channel") == id && severity >= llvl);
@@ -176,10 +226,9 @@ void slog::setup(unsigned int lvl, const char* ids, const char* file, const char
                         debugger_log("Sink without rotation [DONE]\n");
                     }
 
-                    if(file && hasRotation){
-                        //FIXME
+                    if(file && has_rotation){
                         debugger_log("Sink with rotation...\n");
-                        boost::shared_ptr<sinkFile_t> sink(new sinkFile_t(rotBackend));
+                        boost::shared_ptr<sink_file_t> sink(new sink_file_t(rot_backend));
                         sink->set_filter(boost::log::expressions::attr< std::string >("Channel") == id && severity >= llvl);
                         sink->set_formatter(fmt);
 
@@ -187,9 +236,9 @@ void slog::setup(unsigned int lvl, const char* ids, const char* file, const char
                         debugger_log("Sink with rotation [DONE]\n");
                     }
 
-                    if(consoleMode){
+                    if(console_mode){
                         debugger_log("Console sink...\n");
-                        boost::shared_ptr<text_sink> consoleSink = boost::make_shared<text_sink>();
+                        boost::shared_ptr<sink_t> consoleSink = boost::make_shared<sink_t>();
                         consoleSink->locked_backend()->add_stream(stream);
 
                         consoleSink->set_filter(boost::log::expressions::attr< std::string >("Channel") == id && severity >= llvl);
@@ -205,7 +254,7 @@ void slog::setup(unsigned int lvl, const char* ids, const char* file, const char
         debugger_log("Ids file [DONE]\n");
     } else {
         debugger_log("Setting default sinks...\n");
-        if(file && !hasRotation){
+        if(file && !has_rotation){
             debugger_log("Sink without rotation...\n");
             boost::shared_ptr<sink_t> sink(new sink_t(backend));
             sink->set_filter(severity >= static_cast<ES>(lvl));
@@ -214,19 +263,18 @@ void slog::setup(unsigned int lvl, const char* ids, const char* file, const char
             boost::log::core::get()->add_sink(sink);
             debugger_log("Sink without rotation [DONE]\n");
         }
-        if(file && hasRotation){
-            //FIXME
+        if(file && has_rotation){
             debugger_log("Sink with rotation...\n");
-            boost::shared_ptr<sinkFile_t> sink(new sinkFile_t(rotBackend));
+            boost::shared_ptr<sink_file_t> sink(new sink_file_t(rot_backend));
             sink->set_filter(severity >= static_cast<ES>(lvl));
             sink->set_formatter(fmt);
 
             boost::log::core::get()->add_sink(sink);
             debugger_log("Sink with rotation [DONE]\n");
         }
-        if(consoleMode){
+        if(console_mode){
             debugger_log("Console sink...\n");
-            boost::shared_ptr<text_sink> consoleSink = boost::make_shared<text_sink>();
+            boost::shared_ptr<sink_t> consoleSink = boost::make_shared<sink_t>();
             consoleSink->locked_backend()->add_stream(stream);
 
             consoleSink->set_filter(severity >= static_cast<ES>(lvl));
