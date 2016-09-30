@@ -17,12 +17,18 @@ along with BLA_LOG.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "logConfig.h"
 
+//#define NLOG
 #include "log/log.h"
 
 int main(int argc, char* argv[])
 {
     log_setup(0,"cids.conf","clog.conf","qwerty.log",true);
     log_trace("canal") << "traza";
+    log_debug("canal") << "debug";
+    log_info("canal") << "info " << 12 << " " << 2.9;
+    log_warning("canal") << "warning";
+    log_error("canal") << "error";
+    log_fatal("canal") << "fatal";
     log_error("asdf") << "asdf traza";
     log_debug("net") << "net traza";
     return 0;

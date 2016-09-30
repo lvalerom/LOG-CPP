@@ -24,6 +24,28 @@ along with BLA_LOG.  If not, see <http://www.gnu.org/licenses/>.
 #undef log_error
 #undef log_fatal
 
+#ifdef NLOG
+
+#define log_setup(lvl,ids,conf,file,cm) ((void)0)
+
+class no_op
+{
+public:
+        template<typename T>
+        no_op(T){}
+        template<typename T>
+        no_op& operator << (T const&){}
+};
+
+#define log_trace(Channel) no_op(Channel)
+#define log_debug(Channel) no_op(Channel)
+#define log_info(Channel) no_op(Channel)
+#define log_warning(Channel) no_op(Channel)
+#define log_error(Channel) no_op(Channel)
+#define log_fatal(Channel) no_op(Channel)
+
+#else
+
 #define BOOST_LOG_DYN_LINK 1
 #include <boost/log/sources/global_logger_storage.hpp>
 #include <boost/log/sources/record_ostream.hpp>
@@ -107,5 +129,7 @@ namespace slog
 void setup(unsigned int lvl = 5, const char* ids = nullptr, const char* conf = nullptr, const char* file = nullptr, bool console_mode = false);
 
 }
+
+#endif // NLOG
 
 #endif
