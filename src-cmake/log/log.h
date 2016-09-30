@@ -18,6 +18,11 @@ along with BLA_LOG.  If not, see <http://www.gnu.org/licenses/>.
 
 #undef log_setup
 #undef log_trace
+#undef log_debug
+#undef log_info
+#undef log_warning
+#undef log_error
+#undef log_fatal
 
 #define BOOST_LOG_DYN_LINK 1
 #include <boost/log/sources/global_logger_storage.hpp>
