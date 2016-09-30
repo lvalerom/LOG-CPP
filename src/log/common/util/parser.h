@@ -1,5 +1,5 @@
 /*
-Copyright 2015 Luis Valero Martin
+Copyright 2015-2016 Luis Valero Martin
 
 This file is part of BLA_LOG.
 BLA_LOG is free software: you can redistribute it and/or modify
