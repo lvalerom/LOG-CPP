@@ -25,12 +25,12 @@ along with BLA_LOG.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef NLOG
 
-#define log_trace ((void)0)
-#define log_debug ((void)0)
-#define log_info ((void)0)
-#define log_warning ((void)0)
-#define log_error ((void)0)
-#define log_fatal ((void)0)
+#define log_trace(fmt, ...) ((void)0)
+#define log_debug(fmt, ...) ((void)0)
+#define log_info(fmt, ...) ((void)0)
+#define log_warning(fmt, ...) ((void)0)
+#define log_error(fmt, ...) ((void)0)
+#define log_fatal(fmt, ...) ((void)0)
 
 #else
 
