@@ -10,7 +10,7 @@ This project is just a simple set of "cross platform" log libraries. Right now t
 
 The old one is configured with autotools for Linux and Visual Studio for Windows.
 
-To setup the autotools project you have to download the ax_boost_*.m4 macros and place it in the m4 directory (at the same level as autogen.sh script). Then run:
+To setup the autotools project you have to download the ax_boost_*.m4 macros and place them in the m4 directory (at the same level as autogen.sh script). Then run:
 
 ./autogen.sh ; cd bin ; ../configure ; make
 
