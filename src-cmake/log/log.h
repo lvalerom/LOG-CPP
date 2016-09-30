@@ -104,7 +104,7 @@ BOOST_LOG_GLOBAL_LOGGER(logger, thread_safe_logger)
 namespace slog
 {
 
-void setup(unsigned int lvl = 5, const char* ids = nullptr, const char* file = nullptr, const char* conf = nullptr, bool console_mode = false);
+void setup(unsigned int lvl = 5, const char* ids = nullptr, const char* conf = nullptr, const char* file = nullptr, bool console_mode = false);
 
 }
 

@@ -36,7 +36,7 @@ BOOST_LOG_GLOBAL_LOGGER_INIT(logger, thread_safe_logger)
     return logger;
 }
 
-void slog::setup(unsigned int lvl, const char* ids, const char* file, const char* conf, bool console_mode)
+void slog::setup(unsigned int lvl, const char* ids, const char* conf, const char* file, bool console_mode)
 {
     debugger_log("Log setup\n");
     std::string timestamp {"%Y-%m-%d %H:%M:%S"};

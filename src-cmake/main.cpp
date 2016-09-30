@@ -21,7 +21,7 @@ along with BLA_LOG.  If not, see <http://www.gnu.org/licenses/>.
 
 int main(int argc, char* argv[])
 {
-    log_setup(0,"cids.conf","qwerty.log","clog.conf",true);
+    log_setup(0,"cids.conf","clog.conf","qwerty.log",true);
     log_trace("canal") << "traza";
     log_error("asdf") << "asdf traza";
     log_debug("net") << "net traza";
