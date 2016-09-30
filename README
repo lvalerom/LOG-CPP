@@ -1,0 +1,21 @@
+Is getting a little messy...
+
+Dependencies:
+
+boost 1.59.0 for the old project
+boost 1.61.0 for the new project
+cmake 3.6 for the new project
+
+This project is just a simple set of "cross platform" log libraries. Right now there are two main projects:
+
+The old one is configured with autotools for Linux and Visual Studio for Windows.
+
+To setup the autotools project you have to download the ax_boost_*.m4 macros and place it in the m4 directory (at the same level as autogen.sh script). Then run:
+
+./autogen.sh ; cd bin ; ../configure ; make
+
+To setup the Visual Studio project [TODO]
+
+The newest project is the cmake project. To setup this one you have to run:
+
+cd bin ;  cmake .. ; make
