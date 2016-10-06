@@ -287,5 +287,3 @@ void slog::setup(unsigned int lvl, const char* ids, const char* conf, const char
     }
     debugger_log("Log setup [DONE]\n");
 }
-
-

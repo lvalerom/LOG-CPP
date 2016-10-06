@@ -32,6 +32,8 @@ endif (Boost_FOUND)
 
 set (LOG_SOURCES ${LOG_SOURCES} log.cpp)
 
+message("Boost libraries ${LOG_DEPENDENCIES}")
+
 add_library(log STATIC ${LOG_SOURCES})
 target_link_libraries(log ${LOG_DEPENDENCIES})
 
