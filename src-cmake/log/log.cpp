@@ -95,7 +95,7 @@ void slog::setup(unsigned int lvl, const char* ids, const char* conf, const char
                         }
                         if(id == "filename_digits"){
                             try {
-                                filename_digits = std::stoull(rot_info);
+                                filename_digits = static_cast<unsigned>(std::stoi(rot_info));
                                 debugger_log("Filename digits: %u\n", filename_digits);
                             }catch(std::invalid_argument e){
                                 debugger_log("Error invalid_argument exception...\n");
@@ -105,7 +105,7 @@ void slog::setup(unsigned int lvl, const char* ids, const char* conf, const char
                         }
                         if(id == "time_hour"){
                             try {
-                                hour_rotation = std::stoull(rot_info);
+                                hour_rotation = static_cast<unsigned>(std::stoi(rot_info));
                                 debugger_log("Hour rotation: %u\n", hour_rotation);
                             }catch(std::invalid_argument e){
                                 debugger_log("Error invalid_argument exception...\n");
@@ -115,7 +115,7 @@ void slog::setup(unsigned int lvl, const char* ids, const char* conf, const char
                         }
                         if(id == "time_min"){
                             try {
-                                min_rotation = std::stoull(rot_info);
+                                min_rotation = static_cast<unsigned>(std::stoi(rot_info));
                                 debugger_log("Min rotation: %u\n", min_rotation);
                             }catch(std::invalid_argument e){
                                 debugger_log("Error invalid_argument exception...\n");
@@ -125,7 +125,7 @@ void slog::setup(unsigned int lvl, const char* ids, const char* conf, const char
                         }
                         if(id == "time_sec"){
                             try {
-                                sec_rotation = std::stoull(rot_info);
+                                sec_rotation = static_cast<unsigned>(std::stoi(rot_info));
                                 debugger_log("Sec rotation: %u\n", sec_rotation);
                             }catch(std::invalid_argument e){
                                 debugger_log("Error invalid_argument exception...\n");

@@ -10,12 +10,15 @@ set (Boost_USE_STATIC_RUNTIME OFF)
 set (Boost_ALL_DYN_LINK OFF)
 
 #add_definitions(-DBOOST_LOG_DYN_LINK)
+message("Boost root ${BOOST_ROOT}")
 
 find_package(Boost 1.61.0 REQUIRED COMPONENTS system thread log)
 
 if (Boost_FOUND)
 
     include_directories(${Boost_INCLUDE_DIR})
+
+    message("Boost include ${Boost_INCLUDE_DIR}")
 
     find_package(Threads REQUIRED)
 
